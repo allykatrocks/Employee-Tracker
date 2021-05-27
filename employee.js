@@ -18,8 +18,58 @@ function addDepartment() {
         var department = response.department;
         connection.query('INSERT INTO department SET ?', {name: department}, err => {
             if(err) throw err
+            start();
         })
     }).catch(err => {console.error(err)})
+}
+
+function viewDepartments() {
+    connection.query('SELECT * FROM department', (err, data) => {
+        if(err) throw err
+        console.table(data)
+        console.log('\n')
+        start();
+    })
+}
+
+function addRole() {
+    connection.query('SELECT * FROM department', (err, departments) => {
+        if(err) throw err
+        var departNames = departments.map(({name}) => name)
+        inquirer.prompt([{
+            type: "input",
+            name: "title",
+            message: "What is this role's title?"
+        },
+    {
+        type: 'number',
+        name: "salary",
+        message: "What is the annual salary of this role?"
+    },
+{
+    type: 'list',
+    name: 'departmentName',
+    message: 'Which department does this role belong to?',
+    choices: departNames
+}]).then(response => {
+    const departmentName = response.departmentName
+    const department_id = departments.find(department => department.name === departmentName).id
+    connection.query('INSERT INTO role SET ?', {title: response.title, salary: response.salary, department_id}, err => {
+        if(err) throw err
+        start();
+    })
+})
+    })
+    
+}
+
+function viewRoles() {
+    connection.query('SELECT * FROM role', (err, data) => {
+        if(err) throw err
+        console.table(data)
+        console.log('\n')
+        start();
+    })
 }
 
 function start() {
@@ -29,8 +79,20 @@ function start() {
         message: 'What would you like to do?',
         choices: ['Add department', 'Add role', 'Add employee', 'View departments', 'View roles', 'View employees', 'Update employee role']
     }]).then(response => {
-        if(response.action === 'Add department') {
-            addDepartment();
+        switch(response.action) {
+            case 'Add department':
+                addDepartment();
+                break;
+            case 'View departments':
+                viewDepartments();
+                break;
+            case 'Add role':
+                addRole();
+                break;
+            case 'View roles':
+                viewRoles();
+                break;
+            default:    
         }
     }).catch(err => {console.error(err)})
     
