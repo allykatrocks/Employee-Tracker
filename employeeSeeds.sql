@@ -40,13 +40,13 @@ VALUES ("Legal");
 INSERT INTO department (name)
 VALUES ("IT");
 
-INSERT INTO role (title, salary,)
+INSERT INTO role (title, salary)
 VALUES ("Manager", 50000.00);
 
-INSERT INTO role (title, salary,)
-VALUES ("Employee", 30000.00);
+INSERT INTO role (title, salary)
+VALUES ("Epmloyee", 30000.00);
 
-INSERT INTO role (title, salary,)
+INSERT INTO role (title, salary)
 VALUES ("Intern", 20000.00);
 
 INSERT INTO employee (first_name, last_name)
