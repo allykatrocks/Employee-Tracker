@@ -59,7 +59,4 @@ INSERT INTO employee (first_name, last_name)
 VALUES ("Jose", "Perez");
 
 INSERT INTO employee (first_name, last_name)
-VALUES ("Lin" "Shang");
-
-INSERT INTO employee (first_name, last_name)
 VALUES ("Sanjay", "Rudeep");
