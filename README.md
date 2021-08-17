@@ -1,11 +1,11 @@
-# homework-employee-tracker
+## Employee-Tracker
 
-Objective:
+## Objective:
 As a business owner
 I want to be able to view and manage the departments, roles, and employees in my company
 So that I can organize and plan my business
 
-Requirements:
+## Requirements:
 - Design a database in MySql with 3 tables (department, role, and employee)
 - Build a command-line application that at a minimum allows the user to:
 
@@ -16,4 +16,4 @@ Requirements:
   * Update employee roles
 
 Link to video demo:
-[Video Demo]()
+[Video Demo](https://drive.google.com/file/d/1VL--Z7hakk0yyvCSZ7ZeDARiwKATnHDj/view)
